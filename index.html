@@ -1,19 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Samuel Animasaun | Editor Portfolio</title>
-  <style>
-    body { font-family: Arial, sans-serif; background:#0b0f17; color:#e5e7eb; margin:0; padding:40px; }
-    h1 { font-size: 2.5rem; }
-    p { color:#9ca3af; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Animasaun | Professional Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #161616;
+            --text-color: #ffffff;
+            --accent-color: #ff3e3e; /* Bold red for an "Editing/Record" feel */
+            --secondary-text: #b0b0b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 8%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(11, 11, 11, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--text-color);
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0b0b0b 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--accent-color);
+        }
+
+        .profession-tag {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            color: var(--secondary-text);
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+        }
+
+        .social-handle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            transition: 0.4s;
+        }
+
+        .btn:hover {
+            background: white;
+            color: black;
+            transform: scale(1.05);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 8rem 8%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid #222;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 220px;
+            background: #252525;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .video-placeholder i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            opacity: 0.7;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .project-info p {
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 8%;
+            background: #080808;
+            text-align: center;
+        }
+
+        #contact-form {
+            max-width: 700px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1.2rem;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 8%;
+            border-top: 1px solid #222;
+            text-align: center;
+        }
+
+        .footer-socials {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-socials a {
+            color: white;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            #contact-form { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .hero h1 { font-size: 3.5rem; }
+        }
+    </style>
 </head>
 <body>
-  <h1>Samuel Animasaun</h1>
-  <p>Profession: Editor</p>
-  <p>Social Handle: @sammknown</p>
-  <p>This is your downloadable portfolio starter file. Replace this with your full version if needed.</p>
+
+    <nav>
+        <div class="logo">SAMUEL <span>ANIMASAUN</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#work">Showreel</a></li>
+            <li><a href="#contact">Hire Me</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <p class="profession-tag">Editor</p>
+        <h1>Samuel <span>Animasaun</span></h1>
+        <p class="social-handle">
+            <i class="fab fa-instagram"></i> @sammknown_
+        </p>
+        <a href="#work" class="btn">View Portfolio</a>
+    </section>
+
+    <section id="work" class="portfolio">
+        <h2 class="section-title">Selected Works</h2>
+        <div class="grid">
+            <div class="project-card">
+                <div class="video-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Commercial Campaign</h3>
+                    <p>High-energy visual storytelling for a lifestyle brand.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="video-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Music Video Edit</h3>
+                    <p>Rhythmic synchronization and color grading for indie artists.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="video-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Short Film</h3>
+                    <p>Narrative pacing and sound design for a cinematic drama.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Ready to Edit Your Vision?</h2>
+        <p>Drop a message below or reach out via social media.</p>
+        
+        <form id="contact-form">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <textarea class="full-width" placeholder="Project Details" rows="6" required></textarea>
+            <button type="submit" class="btn full-width">Send Inquiry</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-socials">
+            <a href="https://instagram.com/sammknown_" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-vimeo-v"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; 2026 Samuel Animasaun | sammknown_</p>
+    </footer>
+
+    <script>
+        /* --- JAVASCRIPT LOGIC --- */
+
+        // Scroll Reveal Effect
+        const sections = document.querySelectorAll('section');
+        const observerOptions = { threshold: 0.1 };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.8s ease-out';
+            revealObserver.observe(section);
+        });
+
+        // Form Handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.querySelector('input[type="text"]').value;
+            alert(`Thanks for reaching out, ${name}! Samuel will get back to you soon.`);
+            this.reset();
+        });
+
+        // Smooth Scroll for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
+
