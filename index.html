@@ -1,95 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel Animasaun - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samuel Animasaun | Editor Portfolio</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#0b0f17; color:#e5e7eb; margin:0; padding:40px; }
+    h1 { font-size: 2.5rem; }
+    p { color:#9ca3af; }
+  </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <header class="hero">
-        <h1>Samuel Animasaun</h1>
-        <p>Full Stack Developer</p>
-    </header>
-    <section id="about">
-        <h2>About Me</h2>
-        <p>A passionate developer with experience in various technologies...</p>
-    </section>
-    <section id="services">
-        <h2>Services</h2>
-        <ul>
-            <li>Web Development</li>
-            <li>UI/UX Design</li>
-            <li>Consulting</li>
-        </ul>
-    </section>
-    <section id="work">
-        <h2>My Work</h2>
-        <div class="gallery">
-            <img src="project1.jpg" alt="Project 1">
-            <img src="project2.jpg" alt="Project 2">
-        </div>
-    </section>
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form action="#" method="post">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
-    <footer>
-        <p>&copy; 2026 Samuel Animasaun. All rights reserved.</p>
-    </footer>
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const nav = document.querySelector('nav');
-        mobileMenu.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-
-        // Typing Effect
-        const typingText = document.querySelector('.typing-effect');
-        const textArray = ["Full Stack Developer", "UI/UX Designer", "Tech Enthusiast"];
-        let count = 0;
-        let index = 0;
-        let currentText = '';
-        let letter = '';
-        function type() {
-            if (count === textArray.length) {
-                count = 0;
-            }
-            currentText = textArray[count];
-            letter = currentText.slice(0, ++index);
-            typingText.textContent = letter;
-            if (letter.length === currentText.length) {
-                count++;
-                index = 0;
-            }
-            setTimeout(type, 200);
-        }
-        document.addEventListener('DOMContentLoaded', type);
-
-        // Active Nav Highlighting
-        const links = document.querySelectorAll('nav ul li a');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                links.forEach(link => link.classList.remove('active'));
-                link.classList.add('active');
-            });
-        });
-    </script>
+  <h1>Samuel Animasaun</h1>
+  <p>Profession: Editor</p>
+  <p>Social Handle: @sammknown</p>
+  <p>This is your downloadable portfolio starter file. Replace this with your full version if needed.</p>
 </body>
 </html>
